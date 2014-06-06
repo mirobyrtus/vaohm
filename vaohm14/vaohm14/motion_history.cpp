@@ -174,7 +174,13 @@ int main(int argc, char** argv)
 			imshow("MotionHistoryImages", *motion_history);
 
 			// Wait for keyboard input 
-			waitKey(33); // 33 is random number since i dont use it. Better to use the key for ESC / Space..
+			if (waitKey(32) >= 0) { // 32 is space
+				if (debug) printf("Saving file and closing programm! \n");
+				// Save Image 
+				imwrite("C:\\Development\\VAoHM\\motion_history_out.jpg", *motion_history);
+				// Close Program
+				break;
+			}
 		}
 	}
 
